@@ -510,8 +510,8 @@ function submitOrderOnWhatsApp(e) {
         updateCartSummary();
         closeCheckout();
 
-        // Open WhatsApp
-        window.open(whatsappUrl, '_blank');
+        // Open WhatsApp - use location.href for better mobile compatibility
+        window.location.href = whatsappUrl;
 
         // Show success message
         showToast('✅ Order sent! Opening WhatsApp...');

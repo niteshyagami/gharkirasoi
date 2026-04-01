@@ -327,11 +327,17 @@ function renderMenuGrid() {
         const group = groupedMenu[baseName];
         const variants = Object.entries(group.variants);
         const startingPrice = Math.min(...variants.map(([_, v]) => v.price));
+        // derive a simple slug to look for an image file in /images
+        const slug = baseName.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
+        const imagePath = `images/${slug}.jpg`;
 
         return `
             <div class="menu-card" onclick="openItemModal('${baseName}')">
                 <div class="menu-card-side">
-                    <div class="menu-card-image">${group.emoji}</div>
+                    <div class="menu-card-image">
+                        <img src="${imagePath}" alt="${baseName}" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.emoji-fallback').style.display='flex'">
+                        <div class="emoji-fallback" style="display:none">${group.emoji}</div>
+                    </div>
                     <div class="menu-card-details">
                         <h3 class="menu-card-name">${baseName}</h3>
                         <p class="menu-card-desc">${group.description}</p>

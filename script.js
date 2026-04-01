@@ -234,6 +234,8 @@ let cart = [];
 let userLocation = null;
 let activeFilter = 'all';
 let filteredMenu = [];
+let groupedMenu = {}; // prepared grouped menu for modals
+let currentModalItem = null;
 
 // ====== INITIALIZATION ====== 
 document.addEventListener('DOMContentLoaded', () => {
@@ -259,11 +261,42 @@ function updateFilteredMenu() {
         filteredMenu = [
             ...menuData.vegetarian,
             ...menuData.nonVeg,
-            ...menuData.breads
+            ...menuData.breads,
+            ...(menuData.snacks || []),
+            ...(menuData.riceBiryani || []),
+            ...(menuData.noodles || []),
+            ...(menuData.combos || []),
+            ...(menuData.crazy || []),
+            ...(menuData.extras || []),
+            ...(menuData.puriBhature || []),
+            ...(menuData.parathas || [])
         ];
     } else {
         filteredMenu = menuData[activeFilter] || [];
     }
+
+    // Group by base name for variant popup and display logic
+    groupedMenu = {};
+    filteredMenu.forEach(item => {
+        const baseName = getBaseName(item.name);
+        if (!groupedMenu[baseName]) {
+            groupedMenu[baseName] = { emoji: item.emoji || '🍽️', description: item.description || 'Delicious homemade item', variants: {} };
+        }
+
+        const variant = getSizeFromName(item.name) || 'Full';
+        groupedMenu[baseName].variants[variant] = { price: item.price, emoji: item.emoji || groupedMenu[baseName].emoji };
+    });
+}
+
+function getSizeFromName(name) {
+    const match = name.match(/\((Q|H|F)\)$/i);
+    if (!match) return null;
+    const code = match[1].toUpperCase();
+    return code === 'Q' ? 'Quarter' : code === 'H' ? 'Half' : 'Full';
+}
+
+function getBaseName(name) {
+    return name.replace(/\s*\((Q|H|F)\)$/i, '').trim();
 }
 
 function getSizeFromName(name) {
@@ -280,54 +313,92 @@ function getBaseName(name) {
 function renderMenuGrid() {
     const container = document.getElementById('menuGrid');
 
-    // Group by base name to show quarter/half/full as sub-items
-    const groupedMenu = {};
-
-    filteredMenu.forEach(item => {
-        const baseName = getBaseName(item.name);
-        if (!groupedMenu[baseName]) {
-            groupedMenu[baseName] = {
-                emoji: item.emoji,
-                description: item.description || '',
-                variants: {}
-            };
-        }
-
-        const size = getSizeFromName(item.name);
-        if (size) {
-            groupedMenu[baseName].variants[size] = { price: item.price, emoji: item.emoji };
-        } else {
-            groupedMenu[baseName].variants['Full'] = { price: item.price, emoji: item.emoji };
-        }
-    });
-
     container.innerHTML = Object.keys(groupedMenu).map(baseName => {
         const group = groupedMenu[baseName];
-        const hasVariants = Object.keys(group.variants).length > 1;
-
-        const variantsHtml = Object.entries(group.variants)
-            .map(([size, data]) => `
-                <div class="menu-variant">
-                    <span class="variant-label">${size}:</span>
-                    <span class="variant-price">₹${data.price}</span>
-                    <button class="btn-add-cart" onclick="addToCart('${baseName} (${size})', ${data.price}, '${data.emoji}')">Add</button>
-                </div>
-            `).join('');
+        const variants = Object.entries(group.variants);
+        const startingPrice = Math.min(...variants.map(([_, v]) => v.price));
 
         return `
-            <div class="menu-card">
-                <div class="menu-card-image">${group.emoji || '🍽️'}</div>
+            <div class="menu-card" onclick="openItemModal('${baseName}')">
+                <div class="menu-card-image">${group.emoji}</div>
                 <div class="menu-card-body">
                     <h3 class="menu-card-name">${baseName}</h3>
                     <p class="menu-card-desc">${group.description}</p>
+                    <p class="menu-card-advanced">Starting at ₹${startingPrice}</p>
                     <div class="menu-card-footer">
-                        ${hasVariants ? variantsHtml : `<span class="menu-card-price">₹${group.variants.Full.price}</span><button class="btn-add-cart" onclick="addToCart('${baseName}', ${group.variants.Full.price}, '${group.emoji}')">Add</button>`}
+                        <button class="btn-add-cart" onclick="event.stopPropagation(); openItemModal('${baseName}')">View</button>
                     </div>
                 </div>
             </div>
         `;
     }).join('');
 }
+
+function openItemModal(baseName) {
+    const item = groupedMenu[baseName];
+    if (!item) return;
+
+    currentModalItem = { baseName, item, selectedVariant: Object.keys(item.variants)[0], quantity: 1 };
+
+    const variantOptions = Object.entries(item.variants).map(([size, data]) => `
+        <option value="${size}">${size} - ₹${data.price}</option>
+    `).join('');
+
+    const modal = document.getElementById('itemModal');
+    const modalContent = `
+        <div class="modal-card-image">${item.emoji}</div>
+        <h2>${baseName}</h2>
+        <p>${item.description}</p>
+        <label for="itemVariant">Variant</label>
+        <select id="itemVariant" onchange="changeModalVariant(this.value)">${variantOptions}</select>
+        <div class="modal-price-row">Price: <span id="modalItemPrice">₹${item.variants[currentModalItem.selectedVariant].price}</span></div>
+        <div class="quantity-controls modal-quantity">
+            <button onclick="changeModalQuantity(-1)">−</button>
+            <span id="modalQuantity">1</span>
+            <button onclick="changeModalQuantity(1)">+</button>
+        </div>
+        <button class="btn-primary" onclick="addModalItemToCart()">Add to Cart</button>
+    `;
+
+    document.getElementById('itemModalContent').innerHTML = modalContent;
+    document.getElementById('itemModalOverlay').classList.add('open');
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function changeModalVariant(size) {
+    if (!currentModalItem) return;
+    currentModalItem.selectedVariant = size;
+    const price = currentModalItem.item.variants[size].price;
+    document.getElementById('modalItemPrice').textContent = `₹${price}`;
+}
+
+function changeModalQuantity(delta) {
+    if (!currentModalItem) return;
+    currentModalItem.quantity = Math.max(1, currentModalItem.quantity + delta);
+    document.getElementById('modalQuantity').textContent = currentModalItem.quantity;
+}
+
+function addModalItemToCart() {
+    if (!currentModalItem) return;
+    const variant = currentModalItem.selectedVariant;
+    const variantData = currentModalItem.item.variants[variant];
+    const name = `${currentModalItem.baseName} (${variant})`;
+
+    for (let i = 0; i < currentModalItem.quantity; i++) {
+        addToCart(name, variantData.price, currentModalItem.item.emoji);
+    }
+
+    closeItemModal();
+}
+
+function closeItemModal() {
+    document.getElementById('itemModalOverlay').classList.remove('open');
+    document.getElementById('itemModal').classList.remove('open');
+    document.body.style.overflow = 'auto';
+    currentModalItem = null;
+}
+
 
 function filterMenu(category) {
     activeFilter = category;
@@ -765,6 +836,13 @@ function setupEventListeners() {
 
     // Form submission
     document.getElementById('checkoutForm').addEventListener('submit', submitOrderOnWhatsApp);
+
+    // Item modal overlay close
+    document.getElementById('itemModalOverlay').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('itemModalOverlay')) {
+            closeItemModal();
+        }
+    });
 
     // Filter buttons
     document.querySelectorAll('.filter-btn').forEach(btn => {

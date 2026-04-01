@@ -338,7 +338,6 @@ function closeCheckout() {
     document.getElementById('modalOverlay').classList.remove('open');
     document.body.style.overflow = 'auto';
     clearCheckoutForm();
-    userLocation = null;
 }
 
 function renderOrderSummary() {
@@ -390,12 +389,6 @@ function validateCheckoutForm() {
     // Validate Address
     if (!address || address.length < 5) {
         showError('addressError', 'Please enter a complete address');
-        isValid = false;
-    }
-
-    // Validate Location (must have either address OR GPS location)
-    if ((!address || address.length < 5) && !userLocation) {
-        showError('locationError', 'Please enter address or use your current location');
         isValid = false;
     }
 
@@ -617,10 +610,9 @@ function setupEventListeners() {
     document.getElementById('checkoutBtn').addEventListener('click', openCheckout);
     document.getElementById('orderNowBtn').addEventListener('click', openCheckout);
     document.getElementById('closeCheckout').addEventListener('click', closeCheckout);
-    document.getElementById('modalOverlay').addEventListener('click', closeCheckout);
 
-    // Location
-    document.getElementById('useLocationBtn').addEventListener('click', useCurrentLocation);
+    // Prevent modal close when clicking inside modal content
+    document.querySelector('#checkoutModal .modal-content').addEventListener('click', (e) => e.stopPropagation());
 
     // Form submission
     document.getElementById('checkoutForm').addEventListener('submit', submitOrderOnWhatsApp);

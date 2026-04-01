@@ -499,7 +499,7 @@ function submitOrderOnWhatsApp(e) {
     const encodedMessage = encodeURIComponent(message);
 
     // WhatsApp URL - use fixed link
-    const whatsappUrl = "https://wa.me/918448408429?text=Hi%20I%20want%20to%20order%20food%20from%20your%20website";
+    const whatsappUrl = "https://wa.me/918448408429?text=Hi%20I%20want%20to%20order%20food%20from%20your%20store%20!";
 
     // Simulate small delay for UX feedback
     setTimeout(() => {

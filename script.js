@@ -327,10 +327,10 @@ function openCheckout() {
     document.getElementById('modalOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
     
-    // Focus on first input for better UX
-    setTimeout(() => {
-        document.getElementById('customerName').focus();
-    }, 100);
+    // Focus on first input for better UX - disabled for mobile
+    // setTimeout(() => {
+    //     document.getElementById('customerName').focus();
+    // }, 100);
 }
 
 function closeCheckout() {
@@ -681,11 +681,12 @@ function setupEventListeners() {
     });
 
     // Modal overlay - only close if clicking overlay itself, not modal content
-    document.getElementById('modalOverlay').addEventListener('click', (e) => {
-        if (e.target === document.getElementById('modalOverlay')) {
-            closeCheckout();
-        }
-    });
+    // Temporarily disabled to prevent accidental closes
+    // document.getElementById('modalOverlay').addEventListener('click', (e) => {
+    //     if (e.target === document.getElementById('modalOverlay')) {
+    //         closeCheckout();
+    //     }
+    // });
 }
 
 function searchMenuItems(query) {

@@ -252,6 +252,27 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
 });
 
+// Try image fallbacks: webp -> png -> jpg. Hides image and shows emoji fallback if none load.
+function tryNextImage(img) {
+    const exts = ['.webp', '.png', '.jpg'];
+    const base = img.dataset.base;
+    let attempt = parseInt(img.dataset.attempt || '0', 10);
+
+    if (isNaN(attempt)) attempt = 0;
+
+    // If current src failed, advance to next extension
+    attempt += 1;
+    if (attempt < exts.length) {
+        img.dataset.attempt = attempt;
+        img.src = base + exts[attempt];
+    } else {
+        // No more fallbacks - hide image and show emoji
+        img.style.display = 'none';
+        const fallback = img.parentNode.querySelector('.emoji-fallback');
+        if (fallback) fallback.style.display = 'flex';
+    }
+}
+
 function initializeApp() {
     loadCartFromStorage();
     renderMenu();
@@ -329,13 +350,13 @@ function renderMenuGrid() {
         const startingPrice = Math.min(...variants.map(([_, v]) => v.price));
         // derive a simple slug to look for an image file in /images
         const slug = baseName.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
-        const imagePath = `images/${slug}.jpg`;
+        const imageBase = `images/${slug}`; // no extension, we'll try webp/png/jpg
 
         return `
             <div class="menu-card" onclick="openItemModal('${baseName}')">
                 <div class="menu-card-image">
-                    <img src="${imagePath}" alt="${baseName}" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.emoji-fallback').style.display='flex'">
-                    <div class="emoji-fallback" style="display:none">${group.emoji}</div>
+                    <img src="${imageBase}.webp" data-base="${imageBase}" data-attempt="0" alt="${baseName}" loading="lazy" onerror="tryNextImage(this)">
+                        <div class="emoji-fallback" style="display:none">${group.emoji}</div>
                 </div>
                 <div class="menu-card-body">
                     <h3 class="menu-card-name">${baseName}</h3>

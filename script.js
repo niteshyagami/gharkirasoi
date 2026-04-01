@@ -320,14 +320,17 @@ function renderMenuGrid() {
 
         return `
             <div class="menu-card" onclick="openItemModal('${baseName}')">
-                <div class="menu-card-image">${group.emoji}</div>
-                <div class="menu-card-body">
-                    <h3 class="menu-card-name">${baseName}</h3>
-                    <p class="menu-card-desc">${group.description}</p>
-                    <p class="menu-card-advanced">Starting at ₹${startingPrice}</p>
-                    <div class="menu-card-footer">
-                        <button class="btn-add-cart" onclick="event.stopPropagation(); openItemModal('${baseName}')">View</button>
+                <div class="menu-card-side">
+                    <div class="menu-card-image">${group.emoji}</div>
+                    <div class="menu-card-details">
+                        <h3 class="menu-card-name">${baseName}</h3>
+                        <p class="menu-card-desc">${group.description}</p>
+                        <p class="menu-card-advanced">Starts at ₹${startingPrice}</p>
                     </div>
+                </div>
+                <div class="menu-card-inline">
+                    <span class="menu-card-price">₹${startingPrice}</span>
+                    <button class="btn-add-cart" onclick="event.stopPropagation(); openItemModal('${baseName}')">ADD +</button>
                 </div>
             </div>
         `;
@@ -341,7 +344,11 @@ function openItemModal(baseName) {
     currentModalItem = { baseName, item, selectedVariant: Object.keys(item.variants)[0], quantity: 1 };
 
     const variantOptions = Object.entries(item.variants).map(([size, data]) => `
-        <option value="${size}">${size} - ₹${data.price}</option>
+        <label class="variant-row">
+            <input type="radio" name="itemVariant" value="${size}" ${size === currentModalItem.selectedVariant ? 'checked' : ''} onclick="changeModalVariant('${size}')">
+            <span>${size}</span>
+            <span>₹${data.price}</span>
+        </label>
     `).join('');
 
     const modal = document.getElementById('itemModal');
@@ -349,8 +356,12 @@ function openItemModal(baseName) {
         <div class="modal-card-image">${item.emoji}</div>
         <h2>${baseName}</h2>
         <p>${item.description}</p>
-        <label for="itemVariant">Variant</label>
-        <select id="itemVariant" onchange="changeModalVariant(this.value)">${variantOptions}</select>
+
+        <div class="modal-section">
+            <h4>Select Variant</h4>
+            <div class="modal-variant-list">${variantOptions}</div>
+        </div>
+
         <div class="modal-price-row">Price: <span id="modalItemPrice">₹${item.variants[currentModalItem.selectedVariant].price}</span></div>
         <div class="quantity-controls modal-quantity">
             <button onclick="changeModalQuantity(-1)">−</button>

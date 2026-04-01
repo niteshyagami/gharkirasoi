@@ -566,10 +566,14 @@ body {
 .modal,
 .modal-overlay,
 .item-modal,
-.item-modal-content,
 #itemModalOverlay {
     display: none;
     z-index: 2000;
+}
+
+.item-modal-content {
+    display: block;
+    z-index: 2001;
 }
 
 .modal-overlay,

@@ -503,15 +503,15 @@ function submitOrderOnWhatsApp(e) {
 
     // Simulate small delay for UX feedback
     setTimeout(() => {
-        // Clear cart and close modal
+        // Open WhatsApp first
+        window.location.href = whatsappUrl;
+
+        // Then clear cart and close modal
         cart = [];
         saveCartToStorage();
         updateCartBadge();
         updateCartSummary();
         closeCheckout();
-
-        // Open WhatsApp - use location.href for better mobile compatibility
-        window.location.href = whatsappUrl;
 
         // Show success message
         showToast('✅ Order sent! Opening WhatsApp...');

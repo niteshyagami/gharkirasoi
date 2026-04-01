@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghar ki Rasoi - Homemade Indian Food</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <h1>🍛 Ghar ki Rasoi</h1>
+            </div>
+            <div class="header-search">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search dishes...">
+            </div>
+            <button class="cart-button" id="cartToggle">
+                🛒 <span class="badge" id="cartBadge">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- NOTICE BANNER -->
+    <div class="notice-banner">
+        ⚠️ <strong>Please Note:</strong> Prices may vary. Confirm order details on WhatsApp.
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+        <!-- CATEGORY FILTER -->
+        <section class="category-filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="vegetarian">🥬 Veg</button>
+            <button class="filter-btn" data-filter="nonVeg">🍗 Non-Veg</button>
+            <button class="filter-btn" data-filter="breads">🍞 Breads</button>
+        </section>
+
+        <!-- TODAY'S SPECIAL SECTION -->
+        <section class="today-special">
+            <div class="special-banner">
+                <div class="special-image">🌟</div>
+                <div class="special-content">
+                    <span class="special-tag">TODAY'S SPECIAL</span>
+                    <h2>Paneer Butter Masala</h2>
+                    <p>Creamy paneer in rich tomato sauce</p>
+                    <div class="special-footer">
+                        <span class="special-price">₹299</span>
+                        <button class="btn-primary" onclick="addToCart('Paneer Butter Masala', 299, '🧀')">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MENU ITEMS SECTION -->
+        <section class="menu-section">
+            <div class="menu-content">
+                <div class="menu-grid" id="menuGrid"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-btn" id="closeCart">✕</button>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Your cart is empty</p>
+        </div>
+
+        <div class="cart-summary">
+            <div class="summary-row">
+                <span>Subtotal:</span>
+                <span id="subtotal">₹0</span>
+            </div>
+            <div class="summary-row">
+                <span>Delivery Fee:</span>
+                <span id="deliveryFee">₹0</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total:</span>
+                <span id="totalPrice">₹0</span>
+            </div>
+            <button class="btn-primary checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- CART OVERLAY -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeCheckout">✕</button>
+
+            <h2>Checkout</h2>
+
+            <!-- Order Summary -->
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <div id="summaryItems" class="summary-items"></div>
+                <div class="summary-row total">
+                    <span>Total:</span>
+                    <span id="summaryTotal">₹0</span>
+                </div>
+            </div>
+
+            <!-- Checkout Form -->
+            <form id="checkoutForm" class="checkout-form">
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="customerName">Full Name *</label>
+                    <input type="text" id="customerName" placeholder="Enter your name" required>
+                    <span class="error-msg" id="nameError"></span>
+                </div>
+
+                <!-- Phone Number -->
+                <div class="form-group">
+                    <label for="customerPhone">Phone Number *</label>
+                    <input type="tel" id="customerPhone" placeholder="10-digit mobile number" required>
+                    <span class="error-msg" id="phoneError"></span>
+                </div>
+
+                <!-- Address -->
+                <div class="form-group">
+                    <label for="customerAddress">Delivery Address *</label>
+                    <textarea id="customerAddress" placeholder="Enter your complete delivery address" rows="3" required></textarea>
+                    <span class="error-msg" id="addressError"></span>
+                </div>
+
+                <!-- Current Location -->
+                <div class="form-group">
+                    <label>Location *</label>
+                    <button type="button" class="btn-secondary" id="useLocationBtn">📍 Use My Current Location</button>
+                    <div id="locationStatus" class="location-status"></div>
+                    <span class="error-msg" id="locationError"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn-primary submit-order-btn">Place Order on WhatsApp</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL OVERLAY -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+
+    <!-- STICKY FOOTER -->
+    <footer class="sticky-footer">
+        <button class="btn-primary order-now-btn" id="orderNowBtn">
+            Order Now (₹<span id="footerTotal">0</span>)
+        </button>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

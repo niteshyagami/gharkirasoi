@@ -611,9 +611,6 @@ function setupEventListeners() {
     document.getElementById('orderNowBtn').addEventListener('click', openCheckout);
     document.getElementById('closeCheckout').addEventListener('click', closeCheckout);
 
-    // Prevent modal close when clicking inside modal content
-    document.querySelector('#checkoutModal .modal-content').addEventListener('click', (e) => e.stopPropagation());
-
     // Form submission
     document.getElementById('checkoutForm').addEventListener('submit', submitOrderOnWhatsApp);
 

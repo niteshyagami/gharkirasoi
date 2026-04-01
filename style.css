@@ -553,6 +553,7 @@ body {
     width: 90%;
     max-height: 90vh;
     overflow-y: auto;
+    z-index: 2001;
 }
 
 .modal.open {
@@ -1102,6 +1103,16 @@ body {
 
     .modal {
         width: 95% !important;
+        top: 0;
+        left: 0;
+        transform: none;
+        height: 100vh;
+        max-height: 100vh;
+    }
+
+    .modal-content {
+        height: 100%;
+        overflow-y: auto;
     }
 
     .order-summary {

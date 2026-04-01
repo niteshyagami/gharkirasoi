@@ -119,7 +119,7 @@ body {
 /* ====== WHATSAPP FLOAT BUTTON ====== */
 .whatsapp-float {
     position: fixed;
-    top: 80px;
+    bottom: 100px;
     right: 20px;
     z-index: 1000;
 }
@@ -1167,7 +1167,7 @@ body {
     }
 
     .whatsapp-float {
-        top: 70px;
+        bottom: 90px;
         right: 10px;
     }
 

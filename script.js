@@ -333,20 +333,19 @@ function renderMenuGrid() {
 
         return `
             <div class="menu-card" onclick="openItemModal('${baseName}')">
-                <div class="menu-card-side">
-                    <div class="menu-card-image">
-                        <img src="${imagePath}" alt="${baseName}" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.emoji-fallback').style.display='flex'">
-                        <div class="emoji-fallback" style="display:none">${group.emoji}</div>
-                    </div>
-                    <div class="menu-card-details">
-                        <h3 class="menu-card-name">${baseName}</h3>
-                        <p class="menu-card-desc">${group.description}</p>
-                        <p class="menu-card-advanced">Starts at ₹${startingPrice}</p>
-                    </div>
+                <div class="menu-card-image">
+                    <img src="${imagePath}" alt="${baseName}" loading="lazy" onerror="this.style.display='none'; this.parentNode.querySelector('.emoji-fallback').style.display='flex'">
+                    <div class="emoji-fallback" style="display:none">${group.emoji}</div>
                 </div>
-                <div class="menu-card-inline">
-                    <span class="menu-card-price">₹${startingPrice}</span>
-                    <button class="btn-add-cart" onclick="event.stopPropagation(); openItemModal('${baseName}')">ADD +</button>
+                <div class="menu-card-body">
+                    <h3 class="menu-card-name">${baseName}</h3>
+                    <p class="menu-card-desc">${group.description}</p>
+                    <p class="menu-card-advanced">Starts at ₹${startingPrice}</p>
+
+                    <div class="menu-card-footer">
+                        <span class="menu-card-price">₹${startingPrice}</span>
+                        <button class="btn-add-cart" onclick="event.stopPropagation(); openItemModal('${baseName}')">ADD +</button>
+                    </div>
                 </div>
             </div>
         `;

@@ -694,6 +694,33 @@ body {
     color: var(--text-light);
 }
 
+/* Vertical card layout (grid): image on top, then content */
+.menu-grid .menu-card {
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.menu-grid .menu-card-image {
+    width: 100%;
+    height: 140px;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 12px;
+}
+
+.menu-card-body {
+    padding: 0 8px 12px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menu-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
 .menu-card-details {
     min-width: 0;
 }

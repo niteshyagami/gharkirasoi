@@ -1,118 +1,227 @@
 // ====== MENU DATA ====== 
 const menuData = {
     vegetarian: [
-        {
-            name: "Paneer Butter Masala",
-            price: 299,
-            description: "Creamy paneer in rich tomato sauce",
-            emoji: "🧀"
-        },
-        {
-            name: "Dal Makhani",
-            price: 199,
-            description: "Slow-cooked black lentils with cream",
-            emoji: "🍲"
-        },
-        {
-            name: "Aloo Gobi",
-            price: 149,
-            description: "Spiced potato and cauliflower",
-            emoji: "🥔"
-        },
-        {
-            name: "Chana Masala",
-            price: 179,
-            description: "Chickpeas in aromatic tomato curry",
-            emoji: "🍛"
-        },
-        {
-            name: "Palak Paneer",
-            price: 249,
-            description: "Paneer in spinach and cream sauce",
-            emoji: "🥬"
-        },
-        {
-            name: "Mushroom Matar",
-            price: 189,
-            description: "Mushrooms and peas in gravy",
-            emoji: "🍄"
-        }
+        { name: "Gobhi Aloo (Q)", price: 92, emoji: "🥔" },
+        { name: "Gobhi Aloo (H)", price: 150, emoji: "🥔" },
+        { name: "Gobhi Aloo (F)", price: 219, emoji: "🥔" },
+        { name: "Bhindi Aloo (Q)", price: 92, emoji: "🥬" },
+        { name: "Bhindi Aloo (H)", price: 150, emoji: "🥬" },
+        { name: "Bhindi Aloo (F)", price: 219, emoji: "🥬" },
+        { name: "Egg Bhurji (Q)", price: 115, emoji: "🥚" },
+        { name: "Egg Bhurji (H)", price: 184, emoji: "🥚" },
+        { name: "Egg Bhurji (F)", price: 265, emoji: "🥚" },
+        { name: "Soybean Aloo (Q)", price: 92, emoji: "🌱" },
+        { name: "Soybean Aloo (H)", price: 150, emoji: "🌱" },
+        { name: "Soybean Aloo (F)", price: 219, emoji: "🌱" },
+        { name: "Aloo Jeera (Q)", price: 92, emoji: "🥔" },
+        { name: "Aloo Jeera (H)", price: 150, emoji: "🥔" },
+        { name: "Aloo Jeera (F)", price: 219, emoji: "🥔" },
+        { name: "Rajma Masala (Q)", price: 92, emoji: "🥣" },
+        { name: "Rajma Masala (H)", price: 150, emoji: "🥣" },
+        { name: "Rajma Masala (F)", price: 219, emoji: "🥣" },
+        { name: "Chole Masala (Q)", price: 92, emoji: "🧆" },
+        { name: "Chole Masala (H)", price: 150, emoji: "🧆" },
+        { name: "Chole Masala (F)", price: 219, emoji: "🧆" },
+        { name: "Kaddi Pakoda (Q)", price: 92, emoji: "🍢" },
+        { name: "Kaddi Pakoda (H)", price: 150, emoji: "🍢" },
+        { name: "Kaddi Pakoda (F)", price: 219, emoji: "🍢" },
+        { name: "Shahi Paneer (Q)", price: 138, emoji: "🧀" },
+        { name: "Shahi Paneer (H)", price: 184, emoji: "🧀" },
+        { name: "Shahi Paneer (F)", price: 265, emoji: "🧀" },
+        { name: "Paneer Butter Masala (Q)", price: 150, emoji: "🧀" },
+        { name: "Paneer Butter Masala (H)", price: 207, emoji: "🧀" },
+        { name: "Paneer Butter Masala (F)", price: 276, emoji: "🧀" },
+        { name: "Palak Paneer (Q)", price: 150, emoji: "🥬" },
+        { name: "Palak Paneer (H)", price: 195, emoji: "🥬" },
+        { name: "Palak Paneer (F)", price: 265, emoji: "🥬" },
+        { name: "Paneer Lababdar (Q)", price: 150, emoji: "🧀" },
+        { name: "Paneer Lababdar (H)", price: 207, emoji: "🧀" },
+        { name: "Paneer Lababdar (F)", price: 276, emoji: "🧀" },
+        { name: "Matar Paneer (Q)", price: 150, emoji: "🌱" },
+        { name: "Matar Paneer (H)", price: 195, emoji: "🌱" },
+        { name: "Matar Paneer (F)", price: 265, emoji: "🌱" },
+        { name: "Paneer Makhani (Q)", price: 150, emoji: "🧀" },
+        { name: "Paneer Makhani (H)", price: 195, emoji: "🧀" },
+        { name: "Paneer Makhani (F)", price: 265, emoji: "🧀" },
+        { name: "Paneer Do Payaza (Q)", price: 150, emoji: "🧀" },
+        { name: "Paneer Do Payaza (H)", price: 207, emoji: "🧀" },
+        { name: "Paneer Do Payaza (F)", price: 276, emoji: "🧀" },
+        { name: "Dal Tadka (Q)", price: 92, emoji: "🍲" },
+        { name: "Dal Tadka (H)", price: 150, emoji: "🍲" },
+        { name: "Dal Tadka (F)", price: 219, emoji: "🍲" },
+        { name: "Dal Makhani (Q)", price: 115, emoji: "🍲" },
+        { name: "Dal Makhani (H)", price: 184, emoji: "🍲" },
+        { name: "Dal Makhani (F)", price: 265, emoji: "🍲" },
+        { name: "Dal Fry (Q)", price: 104, emoji: "🍲" },
+        { name: "Dal Fry (H)", price: 161, emoji: "🍲" },
+        { name: "Dal Fry (F)", price: 230, emoji: "🍲" },
+        { name: "Chana Masala (Q)", price: 115, emoji: "🧆" },
+        { name: "Chana Masala (H)", price: 184, emoji: "🧆" },
+        { name: "Chana Masala (F)", price: 253, emoji: "🧆" },
+        { name: "Mix Veg (Q)", price: 127, emoji: "🥦" },
+        { name: "Mix Veg (H)", price: 184, emoji: "🥦" },
+        { name: "Mix Veg (F)", price: 265, emoji: "🥦" },
+        { name: "Kadhai Paneer (Q)", price: 150, emoji: "🍛" },
+        { name: "Kadhai Paneer (H)", price: 207, emoji: "🍛" },
+        { name: "Kadhai Paneer (F)", price: 276, emoji: "🍛" },
+        { name: "Tawa Paneer (Q)", price: 150, emoji: "🍲" },
+        { name: "Tawa Paneer (H)", price: 207, emoji: "🍲" },
+        { name: "Tawa Paneer (F)", price: 276, emoji: "🍲" },
+        { name: "Paneer Tikka Masala (Q)", price: 150, emoji: "🍗" },
+        { name: "Paneer Tikka Masala (H)", price: 207, emoji: "🍗" },
+        { name: "Paneer Tikka Masala (F)", price: 276, emoji: "🍗" },
+        { name: "Tawa Chaap (Q)", price: 126, emoji: "🥩" },
+        { name: "Tawa Chaap (H)", price: 184, emoji: "🥩" },
+        { name: "Tawa Chaap (F)", price: 253, emoji: "🥩" },
+        { name: "Baigan Bharta (H)", price: 207, emoji: "🍆" },
+        { name: "Baigan Bharta (F)", price: 299, emoji: "🍆" },
+        { name: "Kadhai Chaap (Q)", price: 138, emoji: "🥩" },
+        { name: "Kadhai Chaap (H)", price: 195, emoji: "🥩" },
+        { name: "Kadhai Chaap (F)", price: 253, emoji: "🥩" },
+        { name: "Aloo Chana (Q)", price: 92, emoji: "🥔" },
+        { name: "Aloo Chana (H)", price: 173, emoji: "🥔" },
+        { name: "Aloo Chana (F)", price: 253, emoji: "🥔" }
     ],
     nonVeg: [
-        {
-            name: "Chicken Tikka Masala",
-            price: 349,
-            description: "Tender chicken in creamy tomato sauce",
-            emoji: "🍗"
-        },
-        {
-            name: "Butter Chicken",
-            price: 329,
-            description: "Succulent chicken in buttery gravy",
-            emoji: "🍖"
-        },
-        {
-            name: "Lamb Rogan Josh",
-            price: 399,
-            description: "Slow-cooked lamb in aromatic sauce",
-            emoji: "🐑"
-        },
-        {
-            name: "Fish Curry",
-            price: 349,
-            description: "Fresh fish in tangy coconut gravy",
-            emoji: "🐟"
-        },
-        {
-            name: "Mutton Keema",
-            price: 379,
-            description: "Minced mutton with herbs and spices",
-            emoji: "🥩"
-        },
-        {
-            name: "Shrimp Masala",
-            price: 429,
-            description: "Juicy shrimp in flavorful sauce",
-            emoji: "🦐"
-        }
+        { name: "Chicken Curry (Q)", price: 184, emoji: "🍗" },
+        { name: "Chicken Curry (H)", price: 276, emoji: "🍗" },
+        { name: "Chicken Curry (F)", price: 380, emoji: "🍗" },
+        { name: "Egg Curry (Q)", price: 115, emoji: "🥚" },
+        { name: "Egg Curry (H)", price: 196, emoji: "🥚" },
+        { name: "Egg Curry (F)", price: 276, emoji: "🥚" },
+        { name: "Crazy Butter Chicken (Q)", price: 196, emoji: "🍗" },
+        { name: "Crazy Butter Chicken (H)", price: 276, emoji: "🍗" },
+        { name: "Crazy Butter Chicken (F)", price: 403, emoji: "🍗" },
+        { name: "Tawa Chicken (Q)", price: 207, emoji: "🍗" },
+        { name: "Tawa Chicken (H)", price: 299, emoji: "🍗" },
+        { name: "Tawa Chicken (F)", price: 452, emoji: "🍗" },
+        { name: "Kadhai Chicken (Q)", price: 196, emoji: "🍗" },
+        { name: "Kadhai Chicken (H)", price: 276, emoji: "🍗" },
+        { name: "Kadhai Chicken (F)", price: 403, emoji: "🍗" },
+        { name: "Rara Chicken (Q)", price: 219, emoji: "🍗" },
+        { name: "Rara Chicken (H)", price: 319, emoji: "🍗" },
+        { name: "Rara Chicken (F)", price: 495, emoji: "🍗" },
+        { name: "Chicken Kali Mirch (Q)", price: 230, emoji: "🍗" },
+        { name: "Chicken Kali Mirch (H)", price: 319, emoji: "🍗" },
+        { name: "Chicken Kali Mirch (F)", price: 495, emoji: "🍗" },
+        { name: "Chicken Tikka Masala (Q)", price: 196, emoji: "🍗" },
+        { name: "Chicken Tikka Masala (H)", price: 296, emoji: "🍗" },
+        { name: "Chicken Tikka Masala (F)", price: 403, emoji: "🍗" },
+        { name: "Tandoori Chaap (H)", price: 171, emoji: "🔥" },
+        { name: "Tandoori Chaap (F)", price: 286, emoji: "🔥" },
+        { name: "Malai Chaap (H)", price: 206, emoji: "🔥" },
+        { name: "Malai Chaap (F)", price: 321, emoji: "🔥" },
+        { name: "Tandoori Chicken (H)", price: 344, emoji: "🍗" },
+        { name: "Tandoori Chicken (F)", price: 631, emoji: "🍗" },
+        { name: "Afghani Chicken (H)", price: 379, emoji: "🍗" },
+        { name: "Afghani Chicken (F)", price: 654, emoji: "🍗" },
+        { name: "Mushroom Tikka", price: 286, emoji: "🍄" },
+        { name: "Paneer Tikka", price: 344, emoji: "🧀" },
+        { name: "Malai Paneer Tikka (H)", price: 252, emoji: "🧀" },
+        { name: "Malai Paneer Tikka (F)", price: 378, emoji: "🧀" },
+        { name: "Achari Paneer Tikka (H)", price: 195, emoji: "🧀" },
+        { name: "Achari Paneer Tikka (F)", price: 309, emoji: "🧀" },
+        { name: "Chicken Tikka (H)", price: 276, emoji: "🍗" },
+        { name: "Chicken Tikka (F)", price: 459, emoji: "🍗" },
+        { name: "Malai Chicken Tikka (H)", price: 298, emoji: "🍗" },
+        { name: "Malai Chicken Tikka (F)", price: 494, emoji: "🍗" },
+        { name: "Achari Chaap (H)", price: 218, emoji: "🔥" },
+        { name: "Achari Chaap (F)", price: 321, emoji: "🔥" }
     ],
     breads: [
-        {
-            name: "Roti",
-            price: 40,
-            description: "Soft unleavened Indian bread",
-            emoji: "🍞"
-        },
-        {
-            name: "Naan",
-            price: 60,
-            description: "Fluffy tandoori oven bread",
-            emoji: "🥖"
-        },
-        {
-            name: "Paratha",
-            price: 80,
-            description: "Layered buttery Indian bread",
-            emoji: "🥞"
-        },
-        {
-            name: "Bhature",
-            price: 90,
-            description: "Fried puffed bread",
-            emoji: "🍩"
-        },
-        {
-            name: "Plain Rice",
-            price: 100,
-            description: "Steamed basmati rice",
-            emoji: "🍚"
-        },
-        {
-            name: "Raita",
-            price: 50,
-            description: "Yogurt-based cool side dish",
-            emoji: "🥛"
-        }
+        { name: "Plain Tawa Roti", price: 12, emoji: "🍞" },
+        { name: "Butter Tawa Roti", price: 14, emoji: "🥖" },
+        { name: "Betroot Roti", price: 17, emoji: "🥖" },
+        { name: "Tandoori Roti", price: 17, emoji: "🥖" },
+        { name: "Laccha Paratha", price: 46, emoji: "🥞" },
+        { name: "Butter Naan", price: 40, emoji: "🥐" },
+        { name: "Plain Naan", price: 35, emoji: "🥐" },
+        { name: "Garlic Naan", price: 46, emoji: "🧄" },
+        { name: "Pudina Paratha", price: 52, emoji: "🌿" }
+    ],
+    snacks: [
+        { name: "Chicken Nuggets", price: 229, emoji: "🍗" },
+        { name: "Cheese Garlic Bread", price: 114, emoji: "🧀" },
+        { name: "Bread Roll", price: 114, emoji: "🥖" },
+        { name: "Bread Pakoda", price: 114, emoji: "🧆" },
+        { name: "Payaz Pakode", price: 114, emoji: "🧅" }
+    ],
+    riceBiryani: [
+        { name: "Steam Rice (Q)", price: 69, emoji: "🍚" },
+        { name: "Steam Rice (F)", price: 115, emoji: "🍚" },
+        { name: "Jeera Rice (Q)", price: 81, emoji: "🍚" },
+        { name: "Jeera Rice (F)", price: 127, emoji: "🍚" },
+        { name: "Matar Pulao", price: 115, emoji: "🌾" },
+        { name: "Veg Biryani (Q)", price: 171, emoji: "🍲" },
+        { name: "Veg Biryani (F)", price: 229, emoji: "🍲" },
+        { name: "Chicken Biryani (Q)", price: 196, emoji: "🍗" },
+        { name: "Chicken Biryani (F)", price: 288, emoji: "🍗" },
+        { name: "Egg Biryani (Q)", price: 183, emoji: "🥚" },
+        { name: "Egg Biryani (F)", price: 253, emoji: "🥚" },
+        { name: "Veg Fried Rice", price: 161, emoji: "🥬" },
+        { name: "Egg Fried Rice", price: 173, emoji: "🥚" },
+        { name: "Chicken Fried Rice", price: 184, emoji: "🍗" },
+        { name: "Egg Chicken Fried Rice", price: 201, emoji: "🍲" },
+        { name: "Schezwan Fried Rice", price: 173, emoji: "🌶️" }
+    ],
+    noodles: [
+        { name: "Veg Chilli Garlic", price: 171, emoji: "🍜" },
+        { name: "Veg Singapuri", price: 183, emoji: "🍜" },
+        { name: "Veg Hakka", price: 171, emoji: "🍜" },
+        { name: "Chicken Chilli Garlic", price: 206, emoji: "🍜" },
+        { name: "Chicken Singapuri", price: 206, emoji: "🍜" },
+        { name: "Chicken Hakka", price: 206, emoji: "🍜" }
+    ],
+    combos: [
+        { name: "Veg Thali", price: 150, emoji: "🍛" },
+        { name: "Paneer Thali", price: 196, emoji: "🧀" },
+        { name: "Spcl Thali", price: 229, emoji: "🍽️" },
+        { name: "Chicken Thali", price: 207, emoji: "🍗" },
+        { name: "Egg Curry Thali", price: 184, emoji: "🥚" },
+        { name: "Butter Chicken Thali", price: 253, emoji: "🍗" },
+        { name: "Dal Makhni Rice", price: 173, emoji: "🍚" },
+        { name: "Rajma Rice", price: 150, emoji: "🍚" },
+        { name: "Chole Rice", price: 150, emoji: "🍚" },
+        { name: "Kaddi Rice", price: 150, emoji: "🍚" },
+        { name: "Tehri Rice", price: 173, emoji: "🍚" }
+    ],
+    crazy: [
+        { name: "Chilli Chicken (Q)", price: 229, emoji: "🌶️" },
+        { name: "Chilli Chicken (F)", price: 344, emoji: "🌶️" },
+        { name: "Chilli Paneer (Q)", price: 217, emoji: "🧀" },
+        { name: "Chilli Paneer (F)", price: 332, emoji: "🧀" },
+        { name: "Chilli Mushroom (Q)", price: 229, emoji: "🍄" },
+        { name: "Chilli Mushroom (F)", price: 321, emoji: "🍄" },
+        { name: "Spring Roll (Q)", price: 148, emoji: "🥟" },
+        { name: "Spring Roll (F)", price: 229, emoji: "🥟" },
+        { name: "Manchurian (Q)", price: 196, emoji: "🥡" },
+        { name: "Manchurian (F)", price: 321, emoji: "🥡" },
+        { name: "Chilli Potato", price: 148, emoji: "🥔" },
+        { name: "Honey Chilli Potato", price: 171, emoji: "🍯" }
+    ],
+    extras: [
+        { name: "Boondi Raita (S)", price: 58, emoji: "🥣" },
+        { name: "Boondi Raita (L)", price: 92, emoji: "🥣" },
+        { name: "Mix Raita", price: 115, emoji: "🥣" },
+        { name: "Gulab Jamun (3pcs)", price: 46, emoji: "🍮" }
+    ],
+    puriBhature: [
+        { name: "Puri Sabji", price: 150, emoji: "🥘" },
+        { name: "Puri Chole", price: 150, emoji: "🥘" },
+        { name: "Chole Bhature", price: 150, emoji: "🥘" },
+        { name: "Veg Macaroni", price: 138, emoji: "🍝" },
+        { name: "Masala Dosa", price: 150, emoji: "🫓" }
+    ],
+    parathas: [
+        { name: "Aloo Payaz Paratha", price: 63, emoji: "🥞" },
+        { name: "Paneer Payaz Paratha", price: 69, emoji: "🧀" },
+        { name: "Gobhi Payaz Paratha", price: 69, emoji: "🥬" },
+        { name: "Mix Paratha", price: 81, emoji: "🥞" },
+        { name: "Chicken Paratha", price: 138, emoji: "🍗" },
+        { name: "Besan Chilla", price: 81, emoji: "🥚" },
+        { name: "Paneer Gobhi Paratha", price: 81, emoji: "🧀" },
+        { name: "Sattu Paratha", price: 75, emoji: "🥞" },
+        { name: "Egg Paratha", price: 69, emoji: "🥚" }
     ]
 };
 

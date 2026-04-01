@@ -266,24 +266,67 @@ function updateFilteredMenu() {
     }
 }
 
+function getSizeFromName(name) {
+    const match = name.match(/\((Q|H|F)\)$/i);
+    if (!match) return null;
+    const code = match[1].toUpperCase();
+    return code === 'Q' ? 'Quarter' : code === 'H' ? 'Half' : 'Full';
+}
+
+function getBaseName(name) {
+    return name.replace(/\s*\((Q|H|F)\)$/i, '').trim();
+}
+
 function renderMenuGrid() {
     const container = document.getElementById('menuGrid');
 
-    container.innerHTML = filteredMenu.map((item, index) => `
-        <div class="menu-card">
-            <div class="menu-card-image">${item.emoji}</div>
-            <div class="menu-card-body">
-                <h3 class="menu-card-name">${item.name}</h3>
-                <p class="menu-card-desc">${item.description}</p>
-                <div class="menu-card-footer">
-                    <span class="menu-card-price">₹${item.price}</span>
-                    <button class="btn-add-cart" onclick="addToCart('${item.name}', ${item.price}, '${item.emoji}')">
-                        Add
-                    </button>
+    // Group by base name to show quarter/half/full as sub-items
+    const groupedMenu = {};
+
+    filteredMenu.forEach(item => {
+        const baseName = getBaseName(item.name);
+        if (!groupedMenu[baseName]) {
+            groupedMenu[baseName] = {
+                emoji: item.emoji,
+                description: item.description || '',
+                variants: {}
+            };
+        }
+
+        const size = getSizeFromName(item.name);
+        if (size) {
+            groupedMenu[baseName].variants[size] = { price: item.price, emoji: item.emoji };
+        } else {
+            groupedMenu[baseName].variants['Full'] = { price: item.price, emoji: item.emoji };
+        }
+    });
+
+    container.innerHTML = Object.keys(groupedMenu).map(baseName => {
+        const group = groupedMenu[baseName];
+        const hasVariants = Object.keys(group.variants).length > 1;
+
+        const variantsHtml = Object.entries(group.variants)
+            .map(([size, data]) => `
+                <div class="menu-variant">
+                    <span class="variant-label">${size}:</span>
+                    <span class="variant-price">₹${data.price}</span>
+                    <button class="btn-add-cart" onclick="addToCart('${baseName} (${size})', ${data.price}, '${data.emoji}')">Add</button>
+                </div>
+            `).join('');
+
+        return `
+            <div class="menu-card">
+                <div class="menu-card-image">${group.emoji || '🍽️'}</div>
+                <div class="menu-card-body">
+                    <h3 class="menu-card-name">${baseName}</h3>
+                    <p class="menu-card-desc">${group.description}</p>
+                    <div class="menu-card-footer">
+                        ${hasVariants ? variantsHtml : `<span class="menu-card-price">₹${group.variants.Full.price}</span><button class="btn-add-cart" onclick="addToCart('${baseName}', ${group.variants.Full.price}, '${group.emoji}')">Add</button>`}
+                    </div>
                 </div>
             </div>
-        </div>
-    `).join('');
+        `;
+    }).join('');
 }
 
 function filterMenu(category) {
@@ -607,8 +650,8 @@ function submitOrderOnWhatsApp(e) {
     // Encode message for WhatsApp
     const encodedMessage = encodeURIComponent(message);
 
-    // WhatsApp URL - use fixed link
-    const whatsappUrl = "https://wa.me/918448408429?text=Hi%20I%20want%20to%20order%20food%20from%20your%20store%20!";
+    // WhatsApp URL with dynamic message content
+    const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
 
     // Simulate small delay for UX feedback
     setTimeout(() => {

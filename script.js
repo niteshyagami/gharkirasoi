@@ -237,7 +237,7 @@ menuData.combos = menuData.combos;
 
 // ====== DELIVERY FEE SETTINGS ====== 
 const DELIVERY_FEE = 30;
-const WHATSAPP_NUMBER = "918448408429";
+const WHATSAPP_NUMBER = "918595044056";
 
 // ====== STATE ====== 
 let cart = [];

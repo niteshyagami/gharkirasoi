@@ -252,9 +252,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
 });
 
-// Try image fallbacks: webp -> png -> jpg. Hides image and shows emoji fallback if none load.
+// Try image fallbacks: webp -> png -> jpg -> jpeg. Hides image and shows emoji fallback if none load.
 function tryNextImage(img) {
-    const exts = ['.webp', '.png', '.jpg'];
+    const exts = ['.webp', '.png', '.jpg', '.jpeg'];
     const base = img.dataset.base;
     let attempt = parseInt(img.dataset.attempt || '0', 10);
 

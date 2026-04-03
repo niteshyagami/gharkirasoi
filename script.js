@@ -385,6 +385,9 @@ function openItemModal(baseName) {
 
     currentModalItem = { baseName, item, selectedVariant: Object.keys(item.variants)[0], quantity: 1 };
 
+    const variantCount = Object.keys(item.variants).length;
+    const hasMultipleVariants = variantCount > 1;
+
     const variantOptions = Object.entries(item.variants).map(([size, data]) => `
         <label class="variant-row">
             <input type="radio" name="itemVariant" value="${size}" ${size === currentModalItem.selectedVariant ? 'checked' : ''} onclick="changeModalVariant('${size}')">
@@ -398,6 +401,13 @@ function openItemModal(baseName) {
     const imageBase = `images/${slug}`;
 
     const modal = document.getElementById('itemModal');
+    const variantSection = hasMultipleVariants ? `
+        <div class="modal-section">
+            <h4>Select Variant</h4>
+            <div class="modal-variant-list">${variantOptions}</div>
+        </div>
+    ` : '';
+
     const modalContent = `
         <div class="modal-card-image">
             <img src="${imageBase}.webp" data-base="${imageBase}" data-attempt="0" alt="${baseName}" onerror="tryNextImage(this)">
@@ -406,10 +416,7 @@ function openItemModal(baseName) {
         <h2>${baseName}</h2>
         <p>${item.description}</p>
 
-        <div class="modal-section">
-            <h4>Select Variant</h4>
-            <div class="modal-variant-list">${variantOptions}</div>
-        </div>
+        ${variantSection}
 
         <div class="modal-price-row">Price: <span id="modalItemPrice">₹${item.variants[currentModalItem.selectedVariant].price}</span></div>
         <div class="quantity-controls modal-quantity">

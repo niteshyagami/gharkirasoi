@@ -361,9 +361,16 @@ function openItemModal(baseName) {
         </label>
     `).join('');
 
+    // Generate image slug for modal (same pattern as menu cards)
+    const slug = baseName.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
+    const imageBase = `images/${slug}`;
+
     const modal = document.getElementById('itemModal');
     const modalContent = `
-        <div class="modal-card-image">${item.emoji}</div>
+        <div class="modal-card-image">
+            <img src="${imageBase}.webp" data-base="${imageBase}" data-attempt="0" alt="${baseName}" onerror="tryNextImage(this)">
+            <div class="emoji-fallback" style="display:none">${item.emoji}</div>
+        </div>
         <h2>${baseName}</h2>
         <p>${item.description}</p>
 

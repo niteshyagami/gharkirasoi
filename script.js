@@ -192,10 +192,6 @@ const menuData = {
         { name: "Chilli Paneer (F)", price: 332, emoji: "🧀" },
         { name: "Chilli Mushroom (Q)", price: 229, emoji: "🍄" },
         { name: "Chilli Mushroom (F)", price: 321, emoji: "🍄" },
-        { name: "Spring Roll (Q)", price: 148, emoji: "🥟" },
-        { name: "Spring Roll (F)", price: 229, emoji: "🥟" },
-        { name: "Manchurian (Q)", price: 196, emoji: "🥡" },
-        { name: "Manchurian (F)", price: 321, emoji: "🥡" },
         { name: "Chilli Potato", price: 148, emoji: "🥔" },
         { name: "Honey Chilli Potato", price: 171, emoji: "🍯" }
     ],

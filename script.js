@@ -73,14 +73,9 @@ const menuData = {
         { name: "Tawa Chaap (Q)", price: 126, emoji: "🥩" },
         { name: "Tawa Chaap (H)", price: 184, emoji: "🥩" },
         { name: "Tawa Chaap (F)", price: 253, emoji: "🥩" },
-        { name: "Baigan Bharta (H)", price: 207, emoji: "🍆" },
-        { name: "Baigan Bharta (F)", price: 299, emoji: "🍆" },
         { name: "Kadhai Chaap (Q)", price: 138, emoji: "🥩" },
         { name: "Kadhai Chaap (H)", price: 195, emoji: "🥩" },
-        { name: "Kadhai Chaap (F)", price: 253, emoji: "🥩" },
-        { name: "Aloo Chana (Q)", price: 92, emoji: "🥔" },
-        { name: "Aloo Chana (H)", price: 173, emoji: "🥔" },
-        { name: "Aloo Chana (F)", price: 253, emoji: "🥔" }
+        { name: "Kadhai Chaap (F)", price: 253, emoji: "🥩" }
     ],
     nonVeg: [
         { name: "Chicken Curry (Q)", price: 184, emoji: "🍗" },
@@ -101,9 +96,6 @@ const menuData = {
         { name: "Rara Chicken (Q)", price: 219, emoji: "🍗" },
         { name: "Rara Chicken (H)", price: 319, emoji: "🍗" },
         { name: "Rara Chicken (F)", price: 495, emoji: "🍗" },
-        { name: "Chicken Kali Mirch (Q)", price: 230, emoji: "🍗" },
-        { name: "Chicken Kali Mirch (H)", price: 319, emoji: "🍗" },
-        { name: "Chicken Kali Mirch (F)", price: 495, emoji: "🍗" },
         { name: "Chicken Tikka Masala (Q)", price: 196, emoji: "🍗" },
         { name: "Chicken Tikka Masala (H)", price: 296, emoji: "🍗" },
         { name: "Chicken Tikka Masala (F)", price: 403, emoji: "🍗" },

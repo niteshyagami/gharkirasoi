@@ -1221,7 +1221,13 @@ body {
     }
 
     .header-search {
-        display: none;
+        flex: 1;
+        min-width: 0;
+    }
+
+    .search-input {
+        padding: 8px 12px;
+        font-size: 13px;
     }
 
     .menu-grid {

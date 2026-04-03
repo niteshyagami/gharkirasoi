@@ -140,10 +140,6 @@ const menuData = {
         { name: "Pudina Paratha", price: 52, emoji: "🌿" }
     ],
     snacks: [
-        { name: "Chicken Nuggets", price: 229, emoji: "🍗" },
-        { name: "Cheese Garlic Bread", price: 114, emoji: "🧀" },
-        { name: "Bread Roll", price: 114, emoji: "🥖" },
-        { name: "Bread Pakoda", price: 114, emoji: "🧆" },
         { name: "Payaz Pakode", price: 114, emoji: "🧅" }
     ],
     riceBiryani: [
@@ -213,8 +209,6 @@ const menuData = {
         { name: "Gobhi Payaz Paratha", price: 69, emoji: "🥬" },
         { name: "Mix Paratha", price: 81, emoji: "🥞" },
         { name: "Chicken Paratha", price: 138, emoji: "🍗" },
-        { name: "Besan Chilla", price: 81, emoji: "🥚" },
-        { name: "Paneer Gobhi Paratha", price: 81, emoji: "🧀" },
         { name: "Sattu Paratha", price: 75, emoji: "🥞" },
         { name: "Egg Paratha", price: 69, emoji: "🥚" }
     ]

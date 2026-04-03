@@ -216,7 +216,7 @@ menuData.breads = menuData.breads;
 menuData.combos = menuData.combos;
 
 // ====== DELIVERY FEE SETTINGS ====== 
-const DELIVERY_FEE = 30;
+const DELIVERY_FEE = 0;
 const WHATSAPP_NUMBER = "918595044056";
 
 // ====== STATE ====== 

@@ -232,6 +232,19 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
 });
 
+// Handle back button for closing modals
+window.addEventListener('popstate', (event) => {
+    // Close whatever modal is currently open
+    const itemModalOpen = document.getElementById('itemModal').classList.contains('open');
+    const checkoutModalOpen = document.getElementById('checkoutModal').classList.contains('open');
+    
+    if (itemModalOpen) {
+        closeItemModalInternal();
+    } else if (checkoutModalOpen) {
+        closeCheckoutInternal();
+    }
+});
+
 // Try image fallbacks: webp -> png -> jpg -> jpeg. Hides image and shows emoji fallback if none load.
 function tryNextImage(img) {
     const exts = ['.webp', '.png', '.jpg', '.jpeg'];
@@ -392,6 +405,9 @@ function openItemModal(baseName) {
     document.getElementById('itemModalOverlay').classList.add('open');
     modal.classList.add('open');
     document.body.style.overflow = 'hidden';
+    
+    // Add to browser history to handle back button
+    window.history.pushState({ modal: 'item', item: baseName }, '', window.location.href);
 }
 
 function changeModalVariant(size) {
@@ -420,11 +436,16 @@ function addModalItemToCart() {
     closeItemModal();
 }
 
-function closeItemModal() {
+// Helper to close item modal UI without history manipulation (used by popstate handler)
+function closeItemModalInternal() {
     document.getElementById('itemModalOverlay').classList.remove('open');
     document.getElementById('itemModal').classList.remove('open');
     document.body.style.overflow = 'auto';
     currentModalItem = null;
+}
+
+function closeItemModal() {
+    closeItemModalInternal();
 }
 
 
@@ -583,17 +604,25 @@ function openCheckout() {
     document.getElementById('modalOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
     
+    // Add to browser history to handle back button
+    window.history.pushState({ modal: 'checkout' }, '', window.location.href);
+    
     // Focus on first input for better UX - disabled for mobile
     // setTimeout(() => {
     //     document.getElementById('customerName').focus();
     // }, 100);
 }
 
-function closeCheckout() {
+// Helper to close checkout modal UI without history manipulation (used by popstate handler)
+function closeCheckoutInternal() {
     document.getElementById('checkoutModal').classList.remove('open');
     document.getElementById('modalOverlay').classList.remove('open');
     document.body.style.overflow = 'auto';
     clearCheckoutForm();
+}
+
+function closeCheckout() {
+    closeCheckoutInternal();
 }
 
 function renderOrderSummary() {

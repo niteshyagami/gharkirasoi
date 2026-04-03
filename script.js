@@ -182,8 +182,7 @@ const menuData = {
         { name: "Dal Makhni Rice", price: 173, emoji: "🍚" },
         { name: "Rajma Rice", price: 150, emoji: "🍚" },
         { name: "Chole Rice", price: 150, emoji: "🍚" },
-        { name: "Kaddi Rice", price: 150, emoji: "🍚" },
-        { name: "Tehri Rice", price: 173, emoji: "🍚" }
+        { name: "Kaddi Rice", price: 150, emoji: "🍚" }
     ],
     crazy: [
         { name: "Chilli Chicken (Q)", price: 229, emoji: "🌶️" },

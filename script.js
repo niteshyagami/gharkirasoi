@@ -425,6 +425,11 @@ function filterMenu(category) {
     activeFilter = category;
     updateFilterActiveButton(category);
     updateFilteredMenu();
+    
+    // Show today's special when filtering by category (not searching)
+    const todaySpecial = document.querySelector('.today-special');
+    if (todaySpecial) todaySpecial.style.display = 'block';
+    
     renderMenuGrid();
 }
 
@@ -868,6 +873,9 @@ function setupEventListeners() {
     // Filter buttons
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
+            // Clear search input when filtering by category
+            const searchInput = document.getElementById('searchInput');
+            if (searchInput) searchInput.value = '';
             filterMenu(e.target.dataset.filter);
         });
     });
@@ -938,11 +946,18 @@ function setupEventListeners() {
 }
 
 function searchMenuItems(query) {
+    const todaySpecial = document.querySelector('.today-special');
+    
     if (!query) {
+        // Clear search - show today's special and all items
+        if (todaySpecial) todaySpecial.style.display = 'block';
         updateFilteredMenu();
         renderMenuGrid();
         return;
     }
+
+    // Hide today's special when searching
+    if (todaySpecial) todaySpecial.style.display = 'none';
 
     // Search across ALL menu categories
     const allItems = [

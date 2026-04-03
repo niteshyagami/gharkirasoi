@@ -335,7 +335,17 @@ function getBaseName(name) {
 function renderMenuGrid() {
     const container = document.getElementById('menuGrid');
 
-    container.innerHTML = Object.keys(groupedMenu).map(baseName => {
+    // Sort items: bestsellers first, then others
+    const items = Object.keys(groupedMenu);
+    const bestsellersFirst = items.sort((a, b) => {
+        const aIsBestseller = BESTSELLERS.vegetarian.includes(a) || BESTSELLERS.nonVeg.includes(a);
+        const bIsBestseller = BESTSELLERS.vegetarian.includes(b) || BESTSELLERS.nonVeg.includes(b);
+        if (aIsBestseller && !bIsBestseller) return -1;
+        if (!aIsBestseller && bIsBestseller) return 1;
+        return 0;
+    });
+
+    container.innerHTML = bestsellersFirst.map(baseName => {
         const group = groupedMenu[baseName];
         const variants = Object.entries(group.variants);
         const startingPrice = Math.min(...variants.map(([_, v]) => v.price));

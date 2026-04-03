@@ -192,8 +192,7 @@ const menuData = {
         { name: "Puri Sabji", price: 150, emoji: "🥘" },
         { name: "Puri Chole", price: 150, emoji: "🥘" },
         { name: "Chole Bhature", price: 150, emoji: "🥘" },
-        { name: "Veg Macaroni", price: 138, emoji: "🍝" },
-        { name: "Masala Dosa", price: 150, emoji: "🫓" }
+        { name: "Veg Macaroni", price: 138, emoji: "🍝" }
     ],
     parathas: [
         { name: "Aloo Payaz Paratha", price: 63, emoji: "🥞" },
@@ -301,25 +300,19 @@ function updateFilteredMenu() {
 }
 
 function getSizeFromName(name) {
-    const match = name.match(/\((Q|H|F)\)$/i);
+    const match = name.match(/\((Q|H|F|S|L)\)$/i);
     if (!match) return null;
     const code = match[1].toUpperCase();
-    return code === 'Q' ? 'Quarter' : code === 'H' ? 'Half' : 'Full';
+    if (code === 'Q') return 'Quarter';
+    if (code === 'H') return 'Half';
+    if (code === 'F') return 'Full';
+    if (code === 'S') return 'Small';
+    if (code === 'L') return 'Large';
+    return null;
 }
 
 function getBaseName(name) {
-    return name.replace(/\s*\((Q|H|F)\)$/i, '').trim();
-}
-
-function getSizeFromName(name) {
-    const match = name.match(/\((Q|H|F)\)$/i);
-    if (!match) return null;
-    const code = match[1].toUpperCase();
-    return code === 'Q' ? 'Quarter' : code === 'H' ? 'Half' : 'Full';
-}
-
-function getBaseName(name) {
-    return name.replace(/\s*\((Q|H|F)\)$/i, '').trim();
+    return name.replace(/\s*\((Q|H|F|S|L)\)$/i, '').trim();
 }
 
 function renderMenuGrid() {

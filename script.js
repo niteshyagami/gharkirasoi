@@ -132,55 +132,55 @@ const menuData = {
         { name: "Pudina Paratha", price: 52, emoji: "🌿", description: "Fresh, minty and incredibly flavorful" }
     ],
     snacks: [
-        { name: "Payaz Pakode", price: 114, emoji: "🧅", description: "Crispy, golden and bursting with aroma" }
+        { name: "Payaz Pakode", price: 119, emoji: "🧅", description: "Crispy, golden and bursting with aroma" }
     ],
     riceBiryani: [
-        { name: "Steam Rice (Q)", price: 69, emoji: "🍚", description: "Fluffy, fragrant and perfectly cooked" },
-        { name: "Steam Rice (F)", price: 115, emoji: "🍚", description: "Fluffy, fragrant and perfectly cooked" },
-        { name: "Jeera Rice (Q)", price: 81, emoji: "🍚", description: "Fragrant, aromatic and absolutely delightful" },
-        { name: "Jeera Rice (F)", price: 127, emoji: "🍚", description: "Fragrant, aromatic and absolutely delightful" },
-        { name: "Matar Pulao", price: 115, emoji: "🌾", description: "Festive, flavorful and utterly comforting" },
-        { name: "Veg Biryani (Q)", price: 171, emoji: "🍲", description: "Royal feast with tantalizing aromas" },
-        { name: "Veg Biryani (F)", price: 229, emoji: "🍲", description: "Royal feast with tantalizing aromas" },
-        { name: "Chicken Biryani (Q)", price: 196, emoji: "🍗", description: "Legendary one-pot magic with premium taste" },
-        { name: "Chicken Biryani (F)", price: 288, emoji: "🍗", description: "Legendary one-pot magic with premium taste" },
-        { name: "Egg Biryani (Q)", price: 183, emoji: "🥚", description: "Aromatic, layered and deeply satisfying" },
-        { name: "Egg Biryani (F)", price: 253, emoji: "🥚", description: "Aromatic, layered and deeply satisfying" },
-        { name: "Veg Fried Rice", price: 161, emoji: "🥬", description: "Wok-tossed perfection with garden freshness" },
-        { name: "Egg Fried Rice", price: 173, emoji: "🥚", description: "Fluffy, savory and incredibly satisfying" },
-        { name: "Chicken Fried Rice", price: 184, emoji: "🍗", description: "Restaurant-quality with perfect char kiss" },
-        { name: "Egg Chicken Fried Rice", price: 201, emoji: "🍲", description: "Double protein delight packed with flavor" },
-        { name: "Schezwan Fried Rice", price: 173, emoji: "🌶️", description: "Fiery, bold and tantalizing to the taste buds" }
+        { name: "Steam Rice (Q)", price: 70, emoji: "🍚", description: "Fluffy, fragrant and perfectly cooked" },
+        { name: "Steam Rice (F)", price: 110, emoji: "🍚", description: "Fluffy, fragrant and perfectly cooked" },
+        { name: "Jeera Rice (Q)", price: 80, emoji: "🍚", description: "Fragrant, aromatic and absolutely delightful" },
+        { name: "Jeera Rice (F)", price: 120, emoji: "🍚", description: "Fragrant, aromatic and absolutely delightful" },
+        { name: "Matar Pulao", price: 129, emoji: "🌾", description: "Festive, flavorful and utterly comforting" },
+        { name: "Veg Biryani (Q)", price: 189, emoji: "🍲", description: "Royal feast with tantalizing aromas" },
+        { name: "Veg Biryani (F)", price: 249, emoji: "🍲", description: "Royal feast with tantalizing aromas" },
+        { name: "Chicken Biryani (Q)", price: 199, emoji: "🍗", description: "Legendary one-pot magic with premium taste" },
+        { name: "Chicken Biryani (F)", price: 279, emoji: "🍗", description: "Legendary one-pot magic with premium taste" },
+        { name: "Egg Biryani (Q)", price: 199, emoji: "🥚", description: "Aromatic, layered and deeply satisfying" },
+        { name: "Egg Biryani (F)", price: 279, emoji: "🥚", description: "Aromatic, layered and deeply satisfying" },
+        { name: "Veg Fried Rice", price: 150, emoji: "🥬", description: "Wok-tossed perfection with garden freshness" },
+        { name: "Egg Fried Rice", price: 160, emoji: "🥚", description: "Fluffy, savory and incredibly satisfying" },
+        { name: "Chicken Fried Rice", price: 170, emoji: "🍗", description: "Restaurant-quality with perfect char kiss" },
+        { name: "Egg Chicken Fried Rice", price: 180, emoji: "🍲", description: "Double protein delight packed with flavor" },
+        { name: "Schezwan Fried Rice", price: 189, emoji: "🌶️", description: "Fiery, bold and tantalizing to the taste buds" }
     ],
     noodles: [
-        { name: "Veg Chilli Garlic", price: 171, emoji: "🍜", description: "Wok-tossed with spicy, garlicky brilliance" },
-        { name: "Veg Singapuri", price: 183, emoji: "🍜", description: "Spicy, tangy and absolutely unforgettable" },
-        { name: "Veg Hakka", price: 171, emoji: "🍜", description: "Bold, smoky and incredibly flavorful" },
-        { name: "Chicken Chilli Garlic", price: 206, emoji: "🍜", description: "Spicy chicken noodle sensation" },
-        { name: "Chicken Singapuri", price: 206, emoji: "🍜", description: "Spicy, aromatic chicken bliss" },
-        { name: "Chicken Hakka", price: 206, emoji: "🍜", description: "Bold spiced chicken noodle delight" }
+        { name: "Veg Chilli Garlic", price: 160, emoji: "🍜", description: "Wok-tossed with spicy, garlicky brilliance" },
+        { name: "Veg Singapuri", price: 170, emoji: "🍜", description: "Spicy, tangy and absolutely unforgettable" },
+        { name: "Veg Hakka", price: 150, emoji: "🍜", description: "Bold, smoky and incredibly flavorful" },
+        { name: "Chicken Chilli Garlic", price: 190, emoji: "🍜", description: "Spicy chicken noodle sensation" },
+        { name: "Chicken Singapuri", price: 199, emoji: "🍜", description: "Spicy, aromatic chicken bliss" },
+        { name: "Chicken Hakka", price: 180, emoji: "🍜", description: "Bold spiced chicken noodle delight" }
     ],
     combos: [
         { name: "Veg Thali", price: 150, emoji: "🍛", description: "Complete vegetarian feast at great value" },
-        { name: "Paneer Thali", price: 196, emoji: "🧀", description: "Premium paneer experience with all fixings" },
-        { name: "Spcl Thali", price: 229, emoji: "🍽️", description: "The ultimate special experience, house favorite" },
-        { name: "Chicken Thali", price: 207, emoji: "🍗", description: "Premium chicken served complete and satisfying" },
-        { name: "Egg Curry Thali", price: 184, emoji: "🥚", description: "Breakfast perfection served as complete meal" },
-        { name: "Butter Chicken Thali", price: 253, emoji: "🍗", description: "The classic favorite served in style" },
-        { name: "Dal Makhni Rice", price: 173, emoji: "🍚", description: "Creamy lentils with fluffy rice bliss" },
+        { name: "Paneer Thali", price: 180, emoji: "🧀", description: "Premium paneer experience with all fixings" },
+        { name: "Spcl Thali", price: 210, emoji: "🍽️", description: "The ultimate special experience, house favorite" },
+        { name: "Chicken Thali", price: 190, emoji: "🍗", description: "Premium chicken served complete and satisfying" },
+        { name: "Egg Curry Thali", price: 180, emoji: "🥚", description: "Breakfast perfection served as complete meal" },
+        { name: "Butter Chicken Thali", price: 200, emoji: "🍗", description: "The classic favorite served in style" },
+        { name: "Dal Makhni Rice", price: 160, emoji: "🍚", description: "Creamy lentils with fluffy rice bliss" },
         { name: "Rajma Rice", price: 150, emoji: "🍚", description: "Hearty beans with perfectly cooked rice" },
         { name: "Chole Rice", price: 150, emoji: "🍚", description: "Aromatic chickpeas with fluffy rice" },
         { name: "Kaddi Rice", price: 150, emoji: "🍚", description: "Tangy delight paired with fragrant rice" }
     ],
     crazy: [
-        { name: "Chilli Chicken (Q)", price: 229, emoji: "🌶️", description: "Fiery, crispy and completely addictive" },
+        { name: "Chilli Chicken (Q)", price: 299, emoji: "🌶️", description: "Fiery, crispy and completely addictive" },
         { name: "Chilli Chicken (F)", price: 344, emoji: "🌶️", description: "Fiery, crispy and completely addictive" },
-        { name: "Chilli Paneer (Q)", price: 217, emoji: "🧀", description: "Spicy paneer bliss with incredible kick" },
+        { name: "Chilli Paneer (Q)", price: 289, emoji: "🧀", description: "Spicy paneer bliss with incredible kick" },
         { name: "Chilli Paneer (F)", price: 332, emoji: "🧀", description: "Spicy paneer bliss with incredible kick" },
-        { name: "Chilli Mushroom (Q)", price: 229, emoji: "🍄", description: "Veggie spice bomb with meaty texture" },
+        { name: "Chilli Mushroom (Q)", price: 279, emoji: "🍄", description: "Veggie spice bomb with meaty texture" },
         { name: "Chilli Mushroom (F)", price: 321, emoji: "🍄", description: "Veggie spice bomb with meaty texture" },
-        { name: "Chilli Potato", price: 148, emoji: "🥔", description: "Crispy potato sensation with spicy glory" },
-        { name: "Honey Chilli Potato", price: 171, emoji: "🍯", description: "Sweet spice harmony in every golden bite" }
+        { name: "Chilli Potato", price: 199, emoji: "🥔", description: "Crispy potato sensation with spicy glory" },
+        { name: "Honey Chilli Potato", price: 199, emoji: "🍯", description: "Sweet spice harmony in every golden bite" }
     ],
     extras: [
         { name: "Boondi Raita (S)", price: 58, emoji: "🥣", description: "Cool, creamy and refreshingly tangy" },
@@ -192,16 +192,16 @@ const menuData = {
         { name: "Puri Sabji", price: 150, emoji: "🥘", description: "Fluffy puri with aromatic vegetable magic" },
         { name: "Puri Chole", price: 150, emoji: "🥘", description: "Crispy puri paired with tangy chickpea bliss" },
         { name: "Chole Bhature", price: 150, emoji: "🥘", description: "Giant fluffy bhature meets spicy chickpeas" },
-        { name: "Veg Macaroni", price: 138, emoji: "🍝", description: "Creamy, cheesy and absolutely comforting" }
+        { name: "Veg Macaroni", price: 130, emoji: "🍝", description: "Creamy, cheesy and absolutely comforting" }
     ],
     parathas: [
-        { name: "Aloo Payaz Paratha", price: 63, emoji: "🥞", description: "Flaky perfection with sweet onion magic" },
-        { name: "Paneer Payaz Paratha", price: 69, emoji: "🧀", description: "Cheesy, flaky and utterly luxurious" },
-        { name: "Gobhi Payaz Paratha", price: 69, emoji: "🥬", description: "Vegetable filled layers of pure joy" },
-        { name: "Mix Paratha", price: 81, emoji: "🥞", description: "Medley of flavors in every flaky layer" },
-        { name: "Chicken Paratha", price: 138, emoji: "🍗", description: "Tender chicken wrapped in soft, flaky bread" },
-        { name: "Sattu Paratha", price: 75, emoji: "🥞", description: "Earthy, nutty and incredibly satisfying" },
-        { name: "Egg Paratha", price: 69, emoji: "🥚", description: "Soft paratha infused with scrambled goodness" }
+        { name: "Aloo Payaz Paratha", price: 60, emoji: "🥞", description: "Flaky perfection with sweet onion magic" },
+        { name: "Paneer Payaz Paratha", price: 70, emoji: "🧀", description: "Cheesy, flaky and utterly luxurious" },
+        { name: "Gobhi Payaz Paratha", price: 70, emoji: "🥬", description: "Vegetable filled layers of pure joy" },
+        { name: "Mix Paratha", price: 75, emoji: "🥞", description: "Medley of flavors in every flaky layer" },
+        { name: "Chicken Paratha", price: 130, emoji: "🍗", description: "Tender chicken wrapped in soft, flaky bread" },
+        { name: "Sattu Paratha", price: 90, emoji: "🥞", description: "Earthy, nutty and incredibly satisfying" },
+        { name: "Egg Paratha", price: 70, emoji: "🥚", description: "Soft paratha infused with scrambled goodness" }
     ]
 };
 

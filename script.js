@@ -207,7 +207,7 @@ const menuData = {
 
 // create categorized menu views for filter buttons
 menuData.mainCourse = [...menuData.vegetarian, ...menuData.nonVeg];
-menuData.tandoor = menuData.nonVeg.filter(item => /tandoori|chaap|tikka|paneer tikka|mushroom tikka/i.test(item.name));
+menuData.tandoor = menuData.nonVeg.filter(item => /tandoori|chaap|tikka|paneer tikka|mushroom tikka/i.test(item.name) && !/tikka masala/i.test(item.name));
 menuData.chinese = [...menuData.noodles, ...menuData.crazy];
 menuData.appetizers = menuData.snacks;
 menuData.rice = menuData.riceBiryani;

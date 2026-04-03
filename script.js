@@ -944,16 +944,37 @@ function searchMenuItems(query) {
         return;
     }
 
+    // Search across ALL menu categories
     const allItems = [
         ...menuData.vegetarian,
         ...menuData.nonVeg,
-        ...menuData.breads
+        ...menuData.breads,
+        ...(menuData.snacks || []),
+        ...(menuData.riceBiryani || []),
+        ...(menuData.noodles || []),
+        ...(menuData.combos || []),
+        ...(menuData.crazy || []),
+        ...(menuData.extras || []),
+        ...(menuData.puriBhature || []),
+        ...(menuData.parathas || [])
     ];
 
     filteredMenu = allItems.filter(item => 
         item.name.toLowerCase().includes(query) || 
-        item.description.toLowerCase().includes(query)
+        (item.description && item.description.toLowerCase().includes(query))
     );
+
+    // Group the filtered results the same way as the menu
+    groupedMenu = {};
+    filteredMenu.forEach(item => {
+        const baseName = getBaseName(item.name);
+        if (!groupedMenu[baseName]) {
+            groupedMenu[baseName] = { emoji: item.emoji || '🍽️', description: item.description || 'Delicious homemade item', variants: {} };
+        }
+
+        const variant = getSizeFromName(item.name) || 'Full';
+        groupedMenu[baseName].variants[variant] = { price: item.price, emoji: item.emoji || groupedMenu[baseName].emoji };
+    });
 
     renderMenuGrid();
 }

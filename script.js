@@ -218,6 +218,10 @@ menuData.combos = menuData.combos;
 // ====== DELIVERY FEE SETTINGS ====== 
 const DELIVERY_FEE = 0;
 const WHATSAPP_NUMBER = "918595044056";
+const BESTSELLERS = {
+    vegetarian: ["Dal Makhani", "Paneer Tikka Masala"],
+    nonVeg: ["Tawa Chicken", "Kadhai Chicken"]
+};
 
 // ====== STATE ====== 
 let cart = [];
@@ -338,9 +342,14 @@ function renderMenuGrid() {
         // derive a simple slug to look for an image file in /images
         const slug = baseName.toLowerCase().replace(/\s+/g, '').replace(/[^a-z0-9]/g, '');
         const imageBase = `images/${slug}`; // no extension, we'll try webp/png/jpg
+        
+        // Check if this is a bestseller
+        const isBestseller = BESTSELLERS.vegetarian.includes(baseName) || BESTSELLERS.nonVeg.includes(baseName);
+        const bestsellBadge = isBestseller ? '<div class="bestseller-badge">⭐ BESTSELLER</div>' : '';
 
         return `
             <div class="menu-card" onclick="openItemModal('${baseName}')">
+                ${bestsellBadge}
                 <div class="menu-card-image">
                     <img src="${imageBase}.webp" data-base="${imageBase}" data-attempt="0" alt="${baseName}" loading="lazy" onerror="tryNextImage(this)">
                         <div class="emoji-fallback" style="display:none">${group.emoji}</div>
@@ -451,6 +460,14 @@ function closeItemModal() {
 
 function filterMenu(category) {
     activeFilter = category;
+    
+    // Smooth transition animation
+    const container = document.getElementById('menuGrid');
+    container.style.animation = 'none';
+    setTimeout(() => {
+        container.style.animation = 'fadeTransition 0.3s ease';
+    }, 10);
+    
     updateFilterActiveButton(category);
     updateFilteredMenu();
     
@@ -459,6 +476,18 @@ function filterMenu(category) {
     if (todaySpecial) todaySpecial.style.display = 'block';
     
     renderMenuGrid();
+    
+    // Scroll to menu on mobile
+    if (window.innerWidth <= 768) {
+        scrollToMenu();
+    }
+}
+
+function scrollToMenu() {
+    const menuSection = document.querySelector('.menu-section');
+    if (menuSection) {
+        menuSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
 }
 
 function updateFilterActiveButton(category) {
@@ -788,6 +817,9 @@ function submitOrderOnWhatsApp(e) {
 
     // Simulate small delay for UX feedback
     setTimeout(() => {
+        // Trigger confetti burst 🎉
+        triggerConfetti();
+        
         // Open WhatsApp first
         window.location.href = whatsappUrl;
 
@@ -878,6 +910,54 @@ function showToast(message, duration = 2000) {
         toast.style.animation = 'slideDown 0.3s ease';
         setTimeout(() => toast.remove(), 300);
     }, duration);
+}
+
+// ====== CONFETTI BURST ====== 
+function triggerConfetti() {
+    const confettiCount = 60;
+    for (let i = 0; i < confettiCount; i++) {
+        createConfetti();
+    }
+}
+
+function createConfetti() {
+    const confetti = document.createElement('div');
+    const colors = ['#e03546', '#ff6b35', '#ff8c42', '#FFD700', '#FFA500', '#FF69B4'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    const randomDelay = Math.random() * 0.2;
+    
+    confetti.style.cssText = `
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: ${randomColor};
+        left: ${Math.random() * 100}vw;
+        top: -10px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        animation: confettiFall ${2 + Math.random() * 1}s ease-in forwards;
+        animation-delay: ${randomDelay}s;
+        opacity: 0.9;
+    `;
+    
+    // Add animation if not already in stylesheet
+    if (!document.querySelector('style[data-confetti]')) {
+        const style = document.createElement('style');
+        style.setAttribute('data-confetti', 'true');
+        style.textContent = `
+            @keyframes confettiFall {
+                to {
+                    transform: translateY(${window.innerHeight + 20}px) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+    
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 4000);
 }
 
 // ====== EVENT LISTENERS SETUP ====== 

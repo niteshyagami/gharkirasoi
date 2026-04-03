@@ -503,6 +503,175 @@ body {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* ====== BESTSELLER BADGE ====== */
+.bestseller-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+    color: #333;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(255, 165, 0, 0.4);
+    z-index: 10;
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 4px 12px rgba(255, 165, 0, 0.4);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 6px 16px rgba(255, 165, 0, 0.6);
+    }
+}
+
+.menu-card {
+    position: relative;
+    animation: cardFadeIn 0.4s ease-out;
+}
+
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== FLOATING BROWSE MENU BUTTON ====== */
+.floating-browse-btn {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #e03546 0%, #ff6b35 50%, #ff8c42 100%);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(224, 53, 70, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: all 0.3s ease;
+    animation: floatButton 3s ease-in-out infinite, slideInFromRight 0.5s ease-out;
+}
+
+@keyframes floatButton {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.floating-browse-btn:hover {
+    transform: scale(1.15) translateY(-15px);
+    box-shadow: 0 12px 32px rgba(224, 53, 70, 0.4);
+}
+
+.floating-browse-btn:active {
+    transform: scale(1.05);
+}
+
+/* Hide floating button if button exists - responsive */
+@media (max-width: 480px) {
+    .floating-browse-btn {
+        width: 56px;
+        height: 56px;
+        font-size: 24px;
+        bottom: 80px;
+        right: 16px;
+    }
+}
+
+/* ====== CATEGORY FILTER ANIMATIONS ====== */
+.filter-button {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: filterFadeIn 0.3s ease-out;
+}
+
+@keyframes filterFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.filter-button.active {
+    animation: filterActive 0.3s ease-out;
+}
+
+@keyframes filterActive {
+    0% {
+        transform: scale(0.95);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ====== CONFETTI ANIMATION ====== */
+@keyframes confettiFall {
+    from {
+        opacity: 1;
+        transform: translateY(0) rotate(0deg);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(${window.innerHeight}px) rotate(720deg);
+    }
+}
+
+/* ====== SMOOTH TRANSITIONS ====== */
+@keyframes fadeTransition {
+    0% {
+        opacity: 0.7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#menuGrid {
+    transition: opacity 0.3s ease;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
 /* ====== NOTICE BANNER ====== */
 /* ====== MENU SECTION ====== */
 .menu-section {
